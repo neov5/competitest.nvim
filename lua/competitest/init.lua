@@ -5,6 +5,7 @@ local M = {}
 ---@param opts table | nil: a table containing user configuration
 function M.setup(opts)
 	config.current_setup = config.update_config_table(config.current_setup, opts)
+	config.current_setup = config.load_local_config_and_extend(vim.fn.getcwd())
 
 	if not config.current_setup.loaded then
 		config.current_setup.loaded = true
